@@ -17,10 +17,12 @@ export default class Fin extends Phaser.Scene {
   }
 
   create() {
+    this.add.image(200, 200, "victoria").setScale(0.2);
     this.cantidadEstrellasTexto = this.add.text(
-      15,
-      15,
-      "Estrellas recolectadas: " + this.cantidadEstrellas,
+      30,
+      400,
+      "Felicidades, terminaste el juego, tus Estrellas recolectadas son " +
+        this.cantidadEstrellas,
       { fontSize: "15px", fill: "#FFFFFF" }
     );
   }

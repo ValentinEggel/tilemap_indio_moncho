@@ -1,10 +1,11 @@
 // URL to explain PHASER scene: https://rexrainbow.github.io/phaser3-rex-notes/docs/site/scene/
 
-export default class Nivel2 extends Phaser.Scene {
+export default class Nivel3 extends Phaser.Scene {
   constructor() {
     // key of the scene
     // the key will be used to start the scene by other scenes
-    super("nivel2");
+    super("nivel3");
+    console.log("nivel 3");
   }
 
   init(data) {
@@ -19,7 +20,8 @@ export default class Nivel2 extends Phaser.Scene {
 
   create() {
     // todo / para hacer: texto de puntaje
-    const map = this.make.tilemap({ key: "map2" });
+
+    const map = this.make.tilemap({ key: "map3" });
 
     // Parameters are the name you gave the tileset in Tiled and then the key of the tileset image in
     // Phaser's cache (i.e. the name you used in preload)
@@ -104,6 +106,11 @@ export default class Nivel2 extends Phaser.Scene {
       "Estrellas recolectadas: " + this.cantidadEstrellas,
       { fontSize: "15px", fill: "#FFFFFF" }
     );
+    //camara
+    this.cameras.main.startFollow(this.jugador);
+    this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+    this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+    this.cantidadEstrellasTexto.setScrollFactor(0);
   }
 
   update() {
@@ -149,7 +156,7 @@ export default class Nivel2 extends Phaser.Scene {
 
     console.log("estrellas recolectadas", this.cantidadEstrellas);
 
-    this.scene.start("nivel3", {
+    this.scene.start("fin", {
       cantidadEstrellas: this.cantidadEstrellas,
     });
   }
